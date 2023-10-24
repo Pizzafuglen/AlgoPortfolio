@@ -2,15 +2,14 @@ public class HandInE2 {
     public static void main(String[] args) {
           myMethod(1);
     }
-    // Fordi de 3 første for-løkker er inde i hinanden, kommer de til at blive multipliceret sammen = N*N*N^2*Log(N) => N^4*Log(N)
-    // Vi har derudover også en lille for-løkke til sidst, der har O(N)-notationen = N*N => N^2
-    // Det betyder vi totalt får = N^4*Log(N) + N^2, da den sidste for-løkke står i sekvens med de andre
+    // Givet at de to første for-løkker er lig Log(N), hvilket betyder at vi halverer problemet, og at den sidste for-løkke er lig N^1+1/2 får vi => Log(N)*Log(N)*N^1+1/2
+    // Med udgangspunktet i at den sidste for-løkke har kompleksiteten O(N^2), kan vi skære den fra fordi den har det laveste kompleksitet, og fordi den ligger uden for root loopet
     public static int myMethod(int N) {
         int x = 0;
         int y = 0;
-        for (int i = 0; i < N; i++) { // N
-            for (int j = 0; j < N; j++) { // N
-                for (int k = 0; k < N * Math.sqrt(N); k++) { // N^2*Log(N)
+        for (int i = 0; i < N; i++) { // Log(N)
+            for (int j = 0; j < N; j++) { // Log(N)
+                for (int k = 0; k < N * Math.sqrt(N); k++) { // N^1+1/2
                     x++;
                 }
                 j *= 2;

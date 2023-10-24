@@ -12,16 +12,16 @@ public class PF1 {
     public static int myMethod2(int N) {
         int x = 0;
         int y = 0;
-        for (int i = 0; i < N; i++) { // N
-            for (int j = 0; j < N; j++) { // N
-                for (int k = 0; k < N * Math.sqrt(N); k++) { // N^2*Log(N)
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                for (int k = 0; k < N * Math.sqrt(N); k++) {
                     x++;
                 }
                 j *= 2;
             }
             i += i;
         }
-        for (int i = 0; i < N * N; i++) // N^2
+        for (int i = 0; i < N * N; i++)
             y++;
         return x + y;
     }
@@ -43,9 +43,9 @@ public class PF1 {
     public static int[] powerOfTwo(int[] input) {
         int[] returnArray = {input[0], input[1], input[2], (int) Math.pow(2, (int) Math.round((Math.log(input[0] + input[1] + input[2]) / Math.log(2))))};
 
-        for (int i = 0; i < input.length - 1; i++) { // n
-            for (int j = i + 1; j < input.length - 1; j++) { // n
-                for (int h = j + 1; h < input.length - 1; h++) { //n
+        for (int i = 0; i < input.length - 1; i++) {
+            for (int j = i + 1; j < input.length - 1; j++) {
+                for (int h = j + 1; h < input.length - 1; h++) {
                     int checkValue = input[i] + input[j] + input[h];
                     int closestPow = (int) Math.round((Math.log(checkValue) / Math.log(2)));
 
@@ -69,9 +69,9 @@ public class PF1 {
     static int myMethod5(int N) {
         int x = 0;
 
-        for (int i = 1; i <= Math.sqrt(N); i++) { // N^2
-            for (int j = 1; j <= N; j++) { // N
-                for (int k = 1; k < N; k *= 2) { // N/2
+        for (int i = 1; i <= Math.sqrt(N); i++) {
+            for (int j = 1; j <= N; j++) {
+                for (int k = 1; k < N; k *= 2) {
                     x++;
                 }
             }
@@ -87,25 +87,27 @@ public class PF1 {
         return sumDivisibleByThree(N - 1);
     }
     static void powerScanner(int z) {
-        if (z >= 100000) System.out.println("False value");
+        if (z >= 100000) {
+            System.out.println("False value");
+        } else {
+            int x = 0;
+            int y = 0;
 
-        int x = 0;
-        int y = 0;
+            int[] temp = new int[]{x, y};
 
-        int[] temp = new int[]{x, y};
-
-        for (int i = 3; i < 100000; i++) {
-            x = i;
-            for (int j = 3; j < 10; j++) {
-                y = j;
-                if (Math.pow(x, y) == z) {
-                    temp[0] = x;
-                    temp[1] = y;
-                    System.out.println(Arrays.toString(temp));
+            for (int i = 3; i < 100000; i++) {
+                x = i;
+                for (int j = 3; j < 10; j++) {
+                    y = j;
+                    if (Math.pow(x, y) == z) {
+                        temp[0] = x;
+                        temp[1] = y;
+                        System.out.println(Arrays.toString(temp));
+                    }
                 }
             }
+            if (temp[0] == 0) System.out.println("False value");
         }
-        if (temp[0] == 0) System.out.println("False value");
     }
     public static long myMethod9(int n) {
         if (n <= 1) {
@@ -149,13 +151,18 @@ public class PF1 {
         System.out.println("Input is: \n" + some_input1); //Print the input
         int some_result1 = unEvenRecursive(some_input1);
         System.out.println("Result is:  \n" + some_result1); //Print the result
+        System.out.println("---- Test 2 ----\n");
+        int some_input12 = 9;//Fill in your input
+
+        System.out.println("Input is: \n" + some_input12); //Print the input
+        int some_result12 = unEvenRecursive(some_input12);
+        System.out.println("Result is:  \n" + some_result12); //Print the result
 
         System.out.println("------------------------- Exercise 2 -------------------------\n");
         System.out.println("---- Test 1 ----\n");
 
-        System.out.println("Fordi de 3 første for-løkker er inde i hinanden, kommer de til at blive multipliceret sammen = N*N*N^2*Log(N) => N^4*Log(N) " +
-                "\nVi har derudover også en lille for-løkke til sidst, der har O(N)-notationen = N*N => N^2 " +
-                "\nDet betyder vi totalt får = N^4*Log(N) + N^2, da den sidste for-løkke står i sekvens med de andre");
+        System.out.println("Givet at de to første for-løkker har en kompleksitet på O(Log(N)), hvilket betyder at vi halverer problemet, og at den sidste for-løkke er lig O(N^1+1/2) får vi => O(Log(N)*Log(N)*N^1+1/2)\n" +
+                "Med udgangspunktet i at den sidste for-løkke har kompleksiteten O(N^2), kan vi skære den fra fordi den har det laveste kompleksitet, og fordi den ligger uden for root loopet");
 
         System.out.println("------------------------- Exercise 3 -------------------------\n");
         System.out.println("---- Test 1 ----\n");
@@ -165,6 +172,13 @@ public class PF1 {
         boolean some_result3 = additive(some_input3);
         System.out.println("Result is:  \n" + some_result3); //Print the result
 
+        System.out.println("---- Test 2 ----\n");
+        String some_input32 = "459";//Fill in your input
+
+        System.out.println("Input is: \n" + some_input32); //Print the input
+        boolean some_result32 = additive(some_input32);
+        System.out.println("Result is:  \n" + some_result32); //Print the result
+
         System.out.println("------------------------- Exercise 4 -------------------------\n");
         System.out.println("---- Test 1 ----\n");
         int[] some_input4 = {23, 56, 22, 11, 65, 89, 3, 44, 87, 910, 45, 35, 98};//Fill in your input
@@ -172,6 +186,14 @@ public class PF1 {
         System.out.println("Input is: \n" + Arrays.toString(some_input4)); //Print the input
         int[] some_result4 = powerOfTwo(some_input4);
         System.out.println("Result is:  \n" + Arrays.toString(some_result4)); //Print the result
+
+        System.out.println("---- Test 2 ----\n");
+        int[] some_input42 = {512, 0, 0, 89, 3, 35};//Fill in your input
+
+        System.out.println("Input is: \n" + Arrays.toString(some_input42)); //Print the input
+        int[] some_result42 = powerOfTwo(some_input42);
+        System.out.println("Result is:  \n" + Arrays.toString(some_result42)); //Print the result
+
         System.out.println("Big-O notationen af algoritmen er O(n^3), da der bliver eksekveret 3 nestede for-løkker");
 
         System.out.println("------------------------- Exercise 5 -------------------------\n");
@@ -181,10 +203,10 @@ public class PF1 {
         System.out.println("Input is: \n" + some_input5); //Print the input
         int some_result5 = myMethod5(some_input5);
         System.out.println("Result is:  \n" + some_result5); //Print the result
-        System.out.println("Svaret er Log(N)*N, da den første for-løkke har en kompleksitet på Log(N)\n" +
-                "For-løkke nr. 2 er lig med N\n" +
-                "For-løkke nr. 3 er lig med N/2\n" +
-                "Multipliceret sammen giver det Log(N)*N");
+        System.out.println("Den første for-løkke har en kompleksitet på O(N^1/2)\n" +
+                "For-løkke nr. 2 er lig med O(N)\n" +
+                "For-løkke nr. 3 er lig med O(Log(N))\n" +
+                "Multipliceret sammen giver det O(Log(N)*N*N^1/2)");
 
         System.out.println("------------------------- Exercise 6 -------------------------\n");
         System.out.println("---- Test 1 ----\n");
@@ -194,14 +216,29 @@ public class PF1 {
         int some_result6 = sumDivisibleByThree(some_input6);
         System.out.println("Result is:  \n" + some_result6); //Print the result
 
+        System.out.println("---- Test 2 ----\n");
+        int some_input62 = 15;//Fill in your input
+
+        System.out.println("Input is: \n" + some_input62); //Print the input
+        int some_result62 = sumDivisibleByThree(some_input62);
+        System.out.println("Result is:  \n" + some_result62); //Print the result
+
         System.out.println("------------------------- Exercise 7 -------------------------\n");
         System.out.println("---- Test 1 ----\n");
-        int some_input7 = 125;//Fill in your input
+        int some_input7 = 6561;//Fill in your input
 
         System.out.println("Input is: \n" + some_input7); //Print the input
 
         System.out.println("Result is:"); //Print the result
         powerScanner(some_input7);
+
+        System.out.println("---- Test 2 ----\n");
+        int some_input72 = 100000;//Fill in your input
+
+        System.out.println("Input is: \n" + some_input72); //Print the input
+
+        System.out.println("Result is:"); //Print the result
+        powerScanner(some_input72);
 
         System.out.println("------------------------- Exercise 8 -------------------------\n");
         System.out.println("---- Test 1 ----\n");
@@ -243,13 +280,22 @@ public class PF1 {
         long some_output92 = myMethod9(some_input91);
         System.out.println("Result is: \n" + some_output92); //Print the result
 
-        System.out.println("Vi kan se det er en fibonacci algoritme vi har med at gøre.\n" +
-                "Det betyder at det kommer til at være en EKSPONENTIEL function => O(2^n)\n" +
-                "Vi ved at T(n-1) = O(2^n-1) => O(2^1-1) => O(2^0) => O(1)\n" +
-                "T(n) = T(n-1) + T(n-2) + T(n-a) + O(1)\n" +
-                "Hvilket er det samme som T(n) = O(2^n-1) + O(2^n-2) + O(a^n-a) + O(1) = O(2^n)\n" +
+        System.out.println("Vi kan se det er en fibonacci algoritme vi har med at gøre, da alle tallene der kommer ud er fibonacci tal. Det betyder at det kommer til at være en EKSPONENTIEL funktion => O(2^n).\n" +
+                "Vi kan demonstrere dette ved at tegne et træ over de rekursive kald der forekommer:\n" +
+                "\t\t\tKald 1\n" +
+                "\n" +
+                "\t\tKald 2\t\tKald 2\n" +
+                "\n" +
+                "Kald 3\t\tKald 3\t\tKald 3\t\tKald 3\n" +
+                "\n" +
                 "I sidste ende betyder det at tiden det tager at gennemføre (tidskompleksiteten af) algoritmen stiger eksponentielt, i takt med at man tilfører en større n-værdi.\n" +
-                "I det tilfælde at man tilføjede endnu et selvkald, ville den være O(3^n)");
+                "\n" +
+                "I det tilfælde at man tilføjede endnu et selvkald, ville den være O(3^n).\n" +
+                "\t\t\t\t\t\tKald 1\n" +
+                "\n" +
+                "\t\t\t\tKald 2\t\tKald 2\t\tKald 2\n" +
+                "\n" +
+                "Kald 3\t\tKald 3\t\tKald 3\t\tKald 3\t\tKald 3\t\tKald 3");
 
         System.out.println("------------------------- Exercise 10 -------------------------\n");
         System.out.println("---- Test 1 ----\n");
@@ -266,6 +312,13 @@ public class PF1 {
         System.out.println("Input is: \n" + Arrays.toString(some_input11)); //Print the input
         int some_result11 = vote(some_input11);
         System.out.println("Result is:  \n" + some_result11); //Print the result
+
+        System.out.println("---- Test 2 ----\n");
+        int[] some_input112 = {1,2,3,4,5,6,7,2,3,4,5};//Fill in your input
+
+        System.out.println("Input is: \n" + Arrays.toString(some_input112)); //Print the input
+        int some_result112 = vote(some_input112);
+        System.out.println("Result is:  \n" + some_result112); //Print the result
 
         System.out.println("Big-O notationen af algoritmen er O(n^2) da jeg har inkluderet 2 nestede for-løkker");
     }

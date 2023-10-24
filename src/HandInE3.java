@@ -1,6 +1,6 @@
 public class HandInE3 {
     public static void main(String[] args) {
-
+        System.out.println(additive("82842605"));
     }
     public static boolean additive(String s) {
         if (s == null || s.length() < 3) return false;
